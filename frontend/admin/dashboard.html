@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <h2 class="logo">Dashboard</h2>
+    <nav>
+      <a onclick="showSection('skills')">Skills</a>
+      <a onclick="showSection('certifications')">Certifications</a>
+      <a onclick="showSection('labs')">Labs</a>
+      <a onclick="logout()">Logout</a>
+    </nav>  
+  </aside>
+
+  <main class="main">
+
+    <section id="skills" class="section hidden">
+      <input id="skill-category" placeholder="Category (e.g. Application Security)">
+      <input id="skill-title" placeholder="Skill title">
+      <textarea id="skill-desc"></textarea>
+      <button onclick="addSkill()">Add Skill</button>
+    </section>
+
+    <section id="certifications" class="section hidden">
+      <input id="cert-name" placeholder="Certification name">
+      <input id="cert-issuer" placeholder="Issuer">
+      <input id="cert-year" placeholder="Year">
+      <input id="cert-url" placeholder="Credential URL">
+      <button onclick="addCertification()">Add Certification</button>
+    </section>
+    <section id="labs" class="section hidden">
+      <input id="lab-title" placeholder="Title">
+        <textarea id="lab-summary"></textarea>
+        <input id="lab-tag" placeholder="Tag">
+        <label>
+          <input type="checkbox" id="lab-public"> Public
+        </label>
+        <button onclick="addLab()">Add Lab Entry</button>
+    </section>
+
+  </main>
+
+</div>
+
+<script src="dashboard.js"></script>
+</body>
+</html>
