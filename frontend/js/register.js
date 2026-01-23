@@ -1,10 +1,10 @@
-document.getElementById("loginForm").addEventListener("submit", async e => {
+document.getElementById("registerForm").addEventListener("submit", async e => {
   e.preventDefault();
 
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  const res = await fetch("http://localhost:3000/api/auth/login", {
+  const res = await fetch("http://localhost:3000/api/auth/register", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password })
@@ -13,12 +13,10 @@ document.getElementById("loginForm").addEventListener("submit", async e => {
   const data = await res.json();
 
   if (!res.ok) {
-    alert(data.message || "Login failed");
+    alert(data.message || "Registration failed");
     return;
   }
 
-  localStorage.setItem("token", data.token);
-  localStorage.setItem("role", data.role);
-
-  window.location.href = "security-lab.html";
+  alert("Account created. Please log in.");
+  window.location.href = "login.html";
 });

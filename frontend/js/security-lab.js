@@ -1,28 +1,38 @@
-const grid = document.getElementById("labGrid");
+const token = localStorage.getItem("token");
 
-fetch("http://localhost:3000/api/lab/public")
-  .then(res => res.json())
-  .then(labs => {
-    if (labs.length === 0) {
-      grid.innerHTML = "<p>No lab entries available yet.</p>";
-      return;
+if (!token) {
+  lockLabs();
+} else {
+  fetch("http://localhost:3000/api/auth/me", {
+    headers: {
+      Authorization: `Bearer ${token}`
     }
-
-    labs.forEach(lab => {
-      const card = document.createElement("div");
-      card.className = "lab-card";
-
-      card.innerHTML = `
-        <h3>${lab.title}</h3>
-        <p>${lab.summary}</p>
-        <span class="lab-tag">${lab.tag}</span>
-      `;
-
-      grid.appendChild(card);
-    });
   })
-  .catch(err => {
-    console.error(err);
-    grid.innerHTML = "<p>Error loading lab content.</p>";
-  
-});
+    .then(res => {
+      if (!res.ok) throw new Error("Not authenticated");
+      return res.json();
+    })
+    .then(user => {
+      unlockLabs();
+      showUserState(user);
+    })
+    .catch(() => {
+      lockLabs();
+    });
+}
+
+function lockLabs() {
+  document.querySelectorAll(".lab-card").forEach(card => {
+    card.classList.add("restricted");
+  });
+}
+
+function unlockLabs() {
+  document.querySelectorAll(".lab-card").forEach(card => {
+    card.classList.remove("restricted");
+  });
+}
+
+function showUserState(user) {
+  console.log("Authenticated as:", user.role);
+}

@@ -107,6 +107,22 @@ body {
   transform: translateY(-1px);
 }
 
+.auth-alt {
+  margin-top: 1.2rem;
+  font-size: 0.85rem;
+  color: #9bb0d3;
+}
+
+.auth-alt a {
+  color: #7fb2ff;
+  text-decoration: none;
+}
+
+.auth-alt a:hover {
+  text-decoration: underline;
+}
+
+
 @keyframes reveal {
   from {
     opacity: 0;

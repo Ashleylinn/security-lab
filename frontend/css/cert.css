@@ -6,9 +6,16 @@
 }
 
 .cert-header {
-  margin-bottom: 3rem;
-  padding-left: 2.5rem;
-  border-left: 3px solid var(--accent);
+  background: linear-gradient(
+    180deg,
+    rgba(120, 180, 255, 0.08),
+    rgba(0, 0, 0, 0)
+  );
+  border: 1px solid rgba(120, 180, 255, 0.15);
+  border-radius: 14px;
+  padding: 2.5rem 3rem;
+  margin-bottom: 4rem;
+  box-shadow: 0 0 0 1px rgba(120, 180, 255, 0.05);
 }
 
 .cert-header h1 {

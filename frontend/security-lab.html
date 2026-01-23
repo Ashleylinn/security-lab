@@ -7,6 +7,7 @@
 
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/skills.css" />
+    <link rel="stylesheet" href="css/security-lab.css" />
 </head>
 <body>
 
@@ -16,6 +17,7 @@
       <li><a href="skills.html">Skills</a></li>
       <li><a href="certifications.html">Certifications</a></li>
       <li><a href="security-lab.html" class="active">Security Lab</a></li>
+      <li id="nav-auth"></li>
     </ul>
   </nav>
 
@@ -30,11 +32,67 @@
       </p>
     </section>
 
-    <section class="lab-grid">
-    </section>
+<section class="lab-grid">
+
+  <div class="lab-card">
+    <h3>Access Control & Identity</h3>
+    <p>
+      Demonstrates role-based access control (RBAC) through protected routes,
+      authenticated sessions, and separation between public and restricted content.
+    </p>
+    <p class="lab-meta">
+      🔒 Demonstrates least-privilege access through role-based restrictions
+    </p>
+  </div>
+
+  <div class="lab-card">
+    <h3>Secure Authentication Design</h3>
+    <p>
+      Explores secure login flows, password hashing, authorization middleware,
+      and session handling used throughout this platform.
+    </p>
+    <p class="lab-meta">
+      🔒 Used to protect administrative views and restricted lab content
+    </p>
+    <a href="https://github.com/Ashleylinn/security-lab/blob/main/README.md" target="_blank">
+        View Implementation
+    </a>
+  </div>
+
+  <div class="lab-card">
+    <h3>Security Operations & Monitoring</h3>
+    <p>
+      Introduces SOC concepts including logging, alert reasoning, and
+      incident summarization.
+    </p>
+    <p class="lab-link">
+      Related system:
+      <a href="https://github.com/Ashleylinn/AI-Assisted-SOC-Alert-Triage-System" target="_blank">
+        AI-Assisted SOC Alert Triage System
+      </a>
+    </p>
+  </div>
+
+  <div class="lab-card">
+    <h3>Cloud Security (Google Cloud)</h3>
+    <p>
+      Covers IAM, firewall rules, least privilege principles, and the shared
+      responsibility model through hands-on cloud security study.
+    </p>
+    <p class="lab-link">
+      Related system:
+      <a href="https://github.com/Ashleylinn/cloud-incident-response-gcp" target="_blank">
+        Google Cloud Security / Incident Response project
+      </a>
+    </p>
+  </div>
+
+</section>
 
   </main>
   <script src="js/security-lab.js"></script>
+  <script src="js/auth-ui.js"></script>
+
 
 </body>
 </html>
