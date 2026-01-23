@@ -1,38 +1,44 @@
-const token = localStorage.getItem("token");
+document.addEventListener("DOMContentLoaded", () => {
+  const token = localStorage.getItem("token");
 
-if (!token) {
-  lockLabs();
-} else {
+  if (!token) {
+    lockUI();
+    return;
+  }
+
   fetch("http://localhost:3000/api/auth/me", {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
+    headers: { Authorization: `Bearer ${token}` }
   })
     .then(res => {
-      if (!res.ok) throw new Error("Not authenticated");
+      if (!res.ok) throw new Error();
       return res.json();
     })
     .then(user => {
-      unlockLabs();
-      showUserState(user);
+      unlockUI();
+      console.log("Authenticated as:", user.role);
     })
-    .catch(() => {
-      lockLabs();
+    .catch(lockUI);
+});
+
+function lockUI() {
+  document.querySelectorAll(".lab-card").forEach(card => {
+    card.classList.add("locked");
+  });
+
+  document.querySelectorAll(".requires-auth").forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      window.location.href = "login.html";
     });
-}
-
-function lockLabs() {
-  document.querySelectorAll(".lab-card").forEach(card => {
-    card.classList.add("restricted");
   });
 }
 
-function unlockLabs() {
+function unlockUI() {
   document.querySelectorAll(".lab-card").forEach(card => {
-    card.classList.remove("restricted");
+    card.classList.remove("locked");
   });
-}
 
-function showUserState(user) {
-  console.log("Authenticated as:", user.role);
+  document.querySelectorAll(".requires-auth").forEach(link => {
+    link.href = link.dataset.target;
+  });
 }

@@ -76,7 +76,6 @@
 }
 
 .lab-card::before {
-  content: "LOCKED";
   position: absolute;
   top: 14px;
   right: 16px;
@@ -98,19 +97,51 @@
   border-bottom-color: rgba(120, 180, 255, 0.5);
 }
 
-.lab-card.restricted {
-  opacity: 0.55;
-  filter: blur(0.6px);
-  pointer-events: none;
-  position: relative;
+
+
+.auth-note {
+  font-size: 0.75rem;
+  color: #8fb3ff;
+  margin-left: 0.5rem;
 }
 
-.lab-card.restricted::after {
-  content: "Login required";
+.lab-card.locked {
+  opacity: 0.55;
+}
+
+.lab-badge {
   position: absolute;
-  top: 14px;
-  right: 16px;
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  color: rgba(120, 180, 255, 0.8);
+  top: 12px;
+  right: 14px;
+
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  padding: 4px 6px;
+  border-radius: 4px;
+
+  color: #8fb3ff;
+  background: rgba(120, 160, 255, 0.12);
+
+  display: none;
+}
+
+.lab-card.locked .lab-badge {
+  display: inline-block;
+}
+
+.lab-card.locked .lab-action {
+  pointer-events: none;
+  color: #777;
+}
+
+.lab-card:not(.locked) {
+  opacity: 1;
+  filter: none;
+}
+
+.requires-auth:not(.locked) {
+  color: var(--accent);
 }

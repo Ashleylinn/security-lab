@@ -30,11 +30,16 @@
         reflections developed through hands-on exploration and certification
         preparation.
       </p>
+      <p class="security-note">
+        Certain interactive demos are restricted to authenticated users to
+        demonstrate access control and least-privilege design.
+      </p>
     </section>
 
 <section class="lab-grid">
 
   <div class="lab-card">
+    <span class="lab-badge">LOCKED</span>
     <h3>Access Control & Identity</h3>
     <p>
       Demonstrates role-based access control (RBAC) through protected routes,
@@ -45,7 +50,9 @@
     </p>
   </div>
 
-  <div class="lab-card">
+  <div class="lab-card locked">
+    <span class="lab-badge">LOCKED</span>
+
     <h3>Secure Authentication Design</h3>
     <p>
       Explores secure login flows, password hashing, authorization middleware,
@@ -54,37 +61,45 @@
     <p class="lab-meta">
       🔒 Used to protect administrative views and restricted lab content
     </p>
-    <a href="https://github.com/Ashleylinn/security-lab/blob/main/README.md" target="_blank">
-        View Implementation
+    <a
+      class="lab-action requires-auth"
+      data-target="https://github.com/Ashleylinn/security-lab/blob/main/README.md"
+      href="login.html"
+    >
+      View Implementation
     </a>
   </div>
 
   <div class="lab-card">
     <h3>Security Operations & Monitoring</h3>
+    <span class="lab-badge">LOCKED</span>
     <p>
       Introduces SOC concepts including logging, alert reasoning, and
       incident summarization.
     </p>
-    <p class="lab-link">
-      Related system:
-      <a href="https://github.com/Ashleylinn/AI-Assisted-SOC-Alert-Triage-System" target="_blank">
-        AI-Assisted SOC Alert Triage System
-      </a>
-    </p>
+    <a
+      class="lab-action requires-auth"
+      data-target="https://github.com/Ashleylinn/AI-Assisted-SOC-Alert-Triage-System"
+      href="login.html"
+    >
+      AI-Assisted SOC Alert Triage System
+    </a>
   </div>
 
   <div class="lab-card">
     <h3>Cloud Security (Google Cloud)</h3>
+    <span class="lab-badge">LOCKED</span>
     <p>
       Covers IAM, firewall rules, least privilege principles, and the shared
       responsibility model through hands-on cloud security study.
     </p>
-    <p class="lab-link">
-      Related system:
-      <a href="https://github.com/Ashleylinn/cloud-incident-response-gcp" target="_blank">
-        Google Cloud Security / Incident Response project
-      </a>
-    </p>
+    <a
+      class="lab-action requires-auth"
+      data-target="https://github.com/Ashleylinn/cloud-incident-response-gcp"
+      href="login.html"
+    >
+      Google Cloud Security / Incident Response project
+    </a>
   </div>
 
 </section>

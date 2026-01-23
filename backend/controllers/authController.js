@@ -62,8 +62,12 @@ export const register = async (req, res) => {
       "INSERT INTO users (email, password_hash, role) VALUES ($1, $2, $3)",
       [email, hashed, "user"]
     );
-
-    res.status(201).json({ message: "User registered" });
+    const token = jwt.sign(
+      { id: newUserId, role: "user" },
+        process.env.JWT_SECRET,
+        { expiresIn: "1h" }
+    );
+    res.status(201).json({ message: "User registered", token });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Server error" });
