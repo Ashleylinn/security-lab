@@ -58,18 +58,28 @@ export const register = async (req, res) => {
 
     const hashed = await bcrypt.hash(password, 10);
 
-    await pool.query(
-      "INSERT INTO users (email, password_hash, role) VALUES ($1, $2, $3)",
+    const result = await pool.query(
+      `INSERT INTO users (email, password_hash, role)
+       VALUES ($1, $2, $3)
+       RETURNING id`,
       [email, hashed, "user"]
     );
+
+    const newUserId = result.rows[0].id;
+
     const token = jwt.sign(
       { id: newUserId, role: "user" },
-        process.env.JWT_SECRET,
-        { expiresIn: "1h" }
+      process.env.JWT_SECRET,
+      { expiresIn: "1h" }
     );
-    res.status(201).json({ message: "User registered", token });
+
+    res.status(201).json({
+      message: "User registered",
+      token
+    });
+
   } catch (err) {
-    console.error(err);
+    console.error("REGISTER ERROR:", err);
     res.status(500).json({ message: "Server error" });
   }
 };
