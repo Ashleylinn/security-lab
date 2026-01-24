@@ -4,7 +4,9 @@ document.getElementById("registerForm").addEventListener("submit", async e => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  const res = await fetch("http://security-lab-backend.onrender.com/api/auth/register", {
+  const API_BASE = "https://security-lab-backend.onrender.com";
+
+  const res = await fetch(`${API_BASE}/api/auth/register`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password })

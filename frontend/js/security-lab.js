@@ -1,12 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
   const token = localStorage.getItem("token");
+  const API_BASE = "https://security-lab-backend.onrender.com";
 
   if (!token) {
     lockUI();
     return;
   }
 
-  fetch("http://security-lab-backend.onrender.com/api/auth/me", {
+  fetch(`${API_BASE}/api/auth/me`, {
     headers: { Authorization: `Bearer ${token}` }
   })
     .then(res => {
