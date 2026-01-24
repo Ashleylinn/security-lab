@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  fetch("http://YOUR-BACKEND-URL/api/auth/me", {
+  fetch("http://security-lab-backend.onrender.com/api/auth/me", {
     headers: { Authorization: `Bearer ${token}` }
   })
     .then(res => {
