@@ -41,6 +41,16 @@
   gap: 2rem;
 }
 
+.cert-link {
+  font-size: 0.9rem;
+  color: #7aa2ff;
+  text-decoration: none;
+}
+
+.cert-link:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 768px) {
   .cert-grid {
     grid-template-columns: 1fr;
@@ -70,9 +80,10 @@
 
 .cert-card h3 {
   font-family: "IBM Plex Mono", monospace;
-  font-size: 1rem;
+  font-size: 0.9rem;
   margin-bottom: 0.5rem;
   color: var(--accent);
+  font-weight: 600;
 }
 
 .cert-status {
