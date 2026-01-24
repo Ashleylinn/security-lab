@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  fetch("http://localhost:3000/api/auth/me", {
+  fetch("http://YOUR-BACKEND-URL/api/auth/me", {
     headers: { Authorization: `Bearer ${token}` }
   })
     .then(res => {
